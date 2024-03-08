@@ -1,0 +1,55 @@
+{% extends "shop/base.html" %}
+{% load static %}
+{%load admin_list%}
+{% include 'core/messages.html'%}
+{% block content %}
+ <!-- Portfolio Section Start -->
+         <section style="font-family:Comic Sans Ms;" class="home-section sec-padding" id="portfolio">
+            <div class="container">
+               <div class="row">
+                  <div class="section-title">
+                          <img style="margin-top:-40vh; width:300px;opacity:70%;"   src="{% static 'img/shootCenterBanner.png'%}" alt="KenyanBrand">
+
+                     <h2> MboaEx Market-Place </h2>
+                  </div>
+               </div>
+
+                    <div style=" box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;width:95%;margin-bottom:20px;margin-left:20px;" class="about-tabs">
+
+                        <button  href="/" type="button" class="tab-item active " data-target="#education">Matwana NFTs</button>
+                 </div>
+                <div  style="margin-top:20px;" class="row">
+                  <!-- Portfolio Item Start-->
+                    {% for product in products%}
+                  <div class="portfolio-item"style=" font-family:Comic Sans Mn;">
+                     <div class="portfolio-item-thumbnail">
+                        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                     </div>
+
+  <h3 style=" font-family:Comic Sans Mn;font-size:200%;" class="portfolio-item-title">{{ product.name }}</h3>
+                       <p  style="background-color:#1DA756; font-size:100%;" class="btn view-project-btn"> Price: Ksh.{{ product.price }}</p>
+                      <h6 style="font-size:60%;color:#062C30; margin-top:5px;">price impact warning:<strong style="color:#E4D789;">   1.88%   </strong>          Quote updates in <strong style="color:#E4D789;">   55s  </strong>Price is VAT. inclusive</h6>
+    <p style="font-size:90%; width:100%; height:15vh; padding-top:20px;" >{{ product.description }}</p>
+                     <div class="bty" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;width:100%;">
+ <center>
+                         <div style="margin-bottom:5px; display:flex;flex-directio:row; height:60px;">
+                         <a style="margin-bottom:1px; display:flex;flex-directio:column; border-radius:10px; background-color:#E2D784;"  class="bty view-project-btn"><img  style="margin-left:2px;height:20px;" src="{% static 'img/3dview.png' %}"> </a>
+                         <a style=" margin-left:4px;display:flex;flex-directio:column; border-radius:40px;margin-bottom:1px;  background-color:#f6f4f0;"  class="bty view-project-btn"><i class="fas fa-shopping-cart ml-1"></i> </a>
+                    <a style="margin-left:4px;font-size:150%; color:red; margin-bottom:1px; display:flex;flex-directio:column; border-radius:10px; background-color:#fefefe;"  class="bty view-project-btn">❤</a>
+
+                     </div>
+{% include 'core/MpesaButton.html'%}
+ </center>   </div>
+
+                     <div style="">
+
+
+                     </div>
+
+                     </div>
+                      {% endfor%}
+                  <!-- Portfolio Item End-->
+               </div>
+            </div>
+         </section>
+{% endblock content %}

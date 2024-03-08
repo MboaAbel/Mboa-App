@@ -1,0 +1,69 @@
+{% load static %}
+
+<div style="margin-top:20px; width:100%;padding:2%;" >
+    <h4 class="d-flex justify-content-between align-items-center mb-3">
+    <span class="text-muted">Pay for-</span>
+    <span class="badge badge-secondary badge-pill">{{ order.items.count }}</span>
+    </h4>
+    <ul class="list-group mb-10 z-depth-3">
+    {% for order_item in order.items.all %}
+    <li  class="list-group-item d-flex justify-content-between lh-condensed">
+        <div>
+        <h6 class="my-0">{{ order_item.quantity }} x {{ order_item.item.title}}</h6>
+        <small class="text-muted">{{ order_item.item.description}}</small>
+        </div>
+        <span class="text-muted">Ksh{{ order_item.get_final_price }}</span>
+    </li>
+    {% endfor %}
+    {% if order.coupon %}
+    <li class="list-group-item d-flex justify-content-between bg-light">
+        <div class="text-success">
+        <h6 class="my-0">Promo code</h6>
+        <small>{{ order.coupon.code }}</small>
+        </div>
+        <span class="text-success">-Ksh{{ order.coupon.amount }}</span>
+    </li>
+    {% endif %}
+    <li class="list-group-item d-flex justify-content-between">
+        <span>Ksh </span>
+        <strong>  {{ order.get_total }}</strong>
+    </li>
+    </ul>
+
+    {% if DISPLAY_COUPON_FORM %}
+    <form style="margin-top:20px;" class="card p-2" action="{% url 'add-coupon' %}" method="POST">
+        {% csrf_token %}
+        <div class="input-group">
+            {{ couponform.code }}
+            <div class="input-group-append">
+            <button class="btn btn-secondary btn-md waves-effect m-0" type="submit">Redeem</button>
+            </div>
+        </div>
+    </form>
+    {% endif %}
+
+
+      <form style="width:100%;margin-top:10px;" class="card p-2" action="{% url 'stk' %}" method="POST">
+        <div class="input-group">
+              {% csrf_token %}
+            <center>
+            <img style="width:100px;  height:50px;"   src="{%static '/img/mpesa.png'%}">
+            <hr>
+     <label class="bty" for="phone_number">Mpesa Phone No   :</label>
+            <input type="number" id="phone_number"  value="0{{user.address.postal_code}}" required name="phone_number" class=" btn form-control" placeholder="Phone Number" style="font-family:Comic Sans Mn;font-size:70%;text-align:center; height:7vh;margin-top:2px; border-radius:10px; width:90%;">
+     <label  class="bty" for="amount">Amount In  (Ksh) :</label>
+            <input type="number" id="amount" readonly value="{{ order.get_total }}" required name="amount" class=" btn form-control" placeholder="Total  (Kes) " style="font-family:Comic Sans Mn;font-size:70%;text-align:center; height:7vh;margin-top:2px; border-radius:10px; width:90%;">
+<hr>
+
+
+                <button  type="submit" style="font-size: 24px;margin-top:10px;margin-left:10px;margin-bottom:40px;width:80%;height:60px ;position:center;border-radius:40px;background: #C9FEC0;border:solid 1px #D2D2D2;font-family:Comic Sans Mn;text-decoration: none;color: #5D6E1E;padding:2%;cursor:pointer;box-shadow: 4px 1px 200px  #93c017;
+ "  >Pay Now</button>
+            </center>
+<div class="input-group-append">
+            </div>
+        </div>
+    </form>
+
+
+</div>
+

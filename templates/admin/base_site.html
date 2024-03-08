@@ -1,0 +1,44 @@
+ <div class="bg-circles">
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+      <div class="circle-3"></div>
+      <div class="circle-5"></div>
+      <div style="background-color:transparent;" class="circle-4"></div>
+      <div style="background-color:transparent;" class="circle-6" ></div>
+   </div>
+   <!-- BG End -->
+   <!-- Overlay Start -->
+            <div  style="Background-color:transparent:padding:5px;margin:2px;" class="container bty">
+{% extends 'admin/base.html' %}
+                             <div class="lg:container lg:mx-auto">
+                {% include 'core/messages.html' %}
+                {% block content %}
+                <!-- Add content here -->
+                {% endblock %}
+            </div>
+
+
+{% load static %}
+{% block branding %}
+  <h1 id="head" >
+    <a href="/admin">
+      <img src="{% static 'img/Mboa Academy.jpg' %}" style=" width:150px;height:150px; border-radius:100%;" alt="" class=" brand_img">
+      <br>
+        <h1  style=" color:#001100;font-size:200%;font-weight:bold 800px;">  MboaEx</h1>
+      <h2 style="  margin-left:10px; margin-top:20px; font-size:50%; color:#000;font-weight:bold"> "If you Don't make money.You Don't make Sense"</h2>
+    </a></h1>
+                <button  style=" width:50%;margin:2px; border-radius:40px; border:bold 2px #000; background-color:#001100;" ><a href="/Deposit"> <p style="color:#f6f4f0;">Support</p></a></button>
+
+{% endblock %}
+
+
+{% block extrastyle %}
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+ <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+ <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+{% endblock %}
+
+                        </div>

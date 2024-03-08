@@ -1,0 +1,54 @@
+{% extends 'core/base.html' %}
+{% block head_title %}{{ title }}{% endblock %}
+
+{% block content %}
+{%load static%}
+
+<section class="home-section align-items-center" id="home">
+            <div class="container">
+               <div class=" align-items-center">
+                  <div class="home-image">
+
+                       <div  class="bty" style="   height:10vh; width:100%;margin-bottom: 20px;box-shadow: 2px 4px 200px #5D6E1E;text-align: center;font-weight: 700px;">
+             <div > <a  style="padding-top: 40px; color:black;height: 100px; width:40%;margin-top:-10px;border-radius: 1px;
+               flex-direction: row;" href="/pro" class="btn link-item"> Buy</a>
+                <a  style=" padding-top: 40px; color:black;height: 100px; width:40%;margin-right:5px ;  margin-top:-10px;border-radius: 1px;"  href="/sell" class="btn link-item">Sell</a>
+         </div>
+         </div>
+                  </div>
+
+  <div class="home-text">
+                        <div  class="btn" style="background-color:#ffffff00;height:60vh;width:80%; padding:5%;">
+                            <img style="margin-bottom:20px;width:100px;height:100px;border-radius:100%;" src="{{ user.address.profileimg.url }}" alt="profile-img">
+                     <h1 style="margin-top:10px; font-size:100%;margin-bottom:20px;"  >  {{user.first_name}}</h1>
+                     <h1 style="margin-top:10px; font-size:100%;margin-bottom:20px;"  >  {{user.email}}</h1>
+                     <img src="{% static 'QrCodes/Users/Mboa-wifi.png'  %}" alt="Qr-Code" style="width:200px; height:200px; opacity: 100%;"  >
+                </div>
+                  </div>
+               </div>
+
+
+
+
+ <div  style="width:100%; margin-top:5%; margin-bottom:20px;
+ border-radius:2px;
+  background-color:#ffffff00;
+                        "  class=" bty">
+        <center>
+                        <div  class="btn">
+                         <a style=" color:green;" href="/accounts/register" > Receive via Offline Mode</a>
+                   </div>
+ </center>
+ </div><center>
+<div  class="bty">
+                          <a  href="/" class="btn" style="margin-left:20px; width:50px; height:50px; background-color:#010203;border-radius:100%;"></a>
+                       <a  href="/" class="btn" style="width:50px; height:50px; background-color:#002200;border-radius:100%;"></a>
+                <a  href="/" class="btn" style="width:50px; height:50px; background-color:#010203;border-radius:100%;"></a>
+                       <a  href="/" class="btn" style="width:50px; height:50px; background-color:#002200;border-radius:100%;"></a>
+                <a  href="/" class="btn" style="width:50px; height:50px; background-color:#010203;border-radius:100%;"></a>
+
+</div>
+            </center>
+</div></section>
+     {% endblock %}
+

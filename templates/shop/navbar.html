@@ -1,0 +1,47 @@
+{% load widget_tweaks %}
+
+<nav class="navbar fixed-top navbar-expand-lg navbar-light white scrolling-navbar">
+    <div class="container">
+
+      <!-- Brand -->
+      {% if request.user.is_authenticated %}
+      <a class="navbar-brand waves-effect" href="/">
+        <strong class="blue-text">Account Balance</strong>
+        <p style="font-size:100%;color:#001100;"> Ksh {{user.balance}}</p>
+      </a>
+          {% endif %}
+
+      <!-- Collapse -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Links -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+        <!-- Right -->
+        <ul class="navbar-nav nav-flex-icons">
+          {% if request.user.is_authenticated %}
+          <li class="nav-item">
+             <a style="font-size:100%;" class='btn btn-warning float-right ml-2' href='/checkout/'>Proceed to checkout</a>
+            <a style="font-size:100%;" class='btn btn-primary float-right' href='/Duka'>Continue shopping</a>
+                 <div  class="bty">
+                         <a style="font-size:100%; color:green;" href="/accounts/register" >History</a>
+                   </div>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a style="font-size:100%;" class=" btn nav-link waves-effect" href="/accounts/register">
+              <span class="clearfix d-none d-sm-inline-block"> Signup </span>
+            </a>
+            <a style="font-size:100%;" class=" btn nav-link waves-effect" href="/accounts/login">
+              <span class="clearfix d-none d-sm-inline-block"> Login </span>
+            </a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
+    </div>
+  </nav>

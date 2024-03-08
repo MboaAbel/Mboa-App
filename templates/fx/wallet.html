@@ -1,0 +1,557 @@
+{% load static %}
+
+
+
+
+
+<html lang="en">
+   <head>
+      <title> MboaEx </title>
+       <link style="border-radius:100%;" rel="shortcut icon" href="{% static 'img/Mboa Academy.jpg '%}"  id="icon" >
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        <link href="{% static 'style.css' %}" rel="stylesheet">
+       <script type="text/javascript" src="/Duka/js/vendor.js">
+          </script>
+  <script type="text/javascript" src="/Duka/js/bundle.js">
+  </script>
+
+   <!-- PG Start -->
+   <div class="page-loader">
+      <div></div>
+      <div></div>
+      <div></div>
+   </div>
+   <div class="bg-circles">
+      <div class="circle-1"></div>
+      <div class="circle-2"></div>
+      <div class="circle-3"></div>
+      <div class="circle-5"></div>
+
+      <div  style="background-color:transparent;" class="circle-4"><img style="width:100%; height:100%;border-radius:50%; opacity:15%;"   src="{% static 'img/KenyanBrand.jpg'%}" alt="KenyanBrand"></div>
+
+   </div>
+   <!-- BG End -->
+   <!-- Overlay Start -->
+   <div class="overlay"></div>
+   <!-- Overlay End -->
+   <body class="bg-gray-100" style="font-family:Comic Sans Ms;">
+      <!-- Main Start -->
+      <div class="main hidden">
+         <!-- Header Start -->
+         <header class="header">
+            <div class="container">
+               <div class="row flex-end">
+                  <button type="button" class="nav-toggler">
+                  <span></span>
+                  </button>
+
+                  <div class="nav">
+                     <div class="nav-inner">
+                            <div style="margin-left:20px;" class="about-tabs">
+                        <a  href="#home" type="button" class="tab-item active " data-target="#home">Discover</a>
+                        <a  href="#assets" class=" btn tab-item">Mboapay</a>
+                        <a  href="/Discounts" class=" btn tab-item">Discounts</a>
+                        <a  href="/Trends" class=" btn tab-item">Trends</a>
+                        <a  href="/" class=" btn tab-item">Mboa Academy</a>
+                        <a  href="/Deposit" type=" bty button" class="tab-item  link-item" data-target="#experience">Learn</a>
+                        <a  href="#home" type="button" class="tab-item  link-item" data-target="#experience">Affiliates</a>
+                        <a  href="/"  type="button" class="  tab-item  link-item  "> WhatsApp Community</a>
+                        <a  href="/"  type="button" class=" tab-item  link-item  ">Get Help ? </a> <br>
+                           <a style="margin-top:5vh;"><a href="/accounts/logout" class=" btn nav-item   link-item">    exit</a></a>
+                            </div>
+
+                     </div>
+                  </div>
+
+
+               </div>
+            </div>
+         </header>
+         <!-- Header End -->
+         <!--Home Section Start -->
+          <div class="lg:container lg:mx-auto">
+                {% include 'core/messages.html' %}
+                {% block content %}
+                <!-- Add content here -->
+                {% endblock %}
+            </div>
+
+         <section class="home-section align-items-center" id="home">
+            <div style="width:90vw;" class="container">
+               <div class="row align-items-center">
+                  <div  class="home-img">
+<center>
+                         <img src="{% static profile_pic.url %}" alt="" style="border-radius: none;opacity: 60%;"  >
+    <img style="width:100px; height:100px ;border-radius:100%; "  src=" {{ user.address.profileimg.url }} " alt="profile-img">
+                        <div style="
+                        margin-right:20px;
+                        margin-bottom:20px;
+                        font-size:80%;
+	height:20vh;
+	opacity: 1;
+	animation: zoomInOut 30s linear infinite;">
+                           <h1> Wooza {{ user.first_name}},
+                               <h2 >{{user.email}}</h2>
+                               <hr style="width:100%;height:3px;"/>
+
+                           </h1>
+
+                           <h3 style="Color:#005500;">  Mpesa Account:   0{{user.address.postal_code}} <br>
+                           Mboa Till: {{user.account.account_no}}
+
+                           </h3>
+</div><a class="btn" style="margin-top:5vh;background-color:black;color:#f6f4f0;" href="/setting">Settings</a>
+</center></div>
+
+                          <div class="home-text">
+<div style="font-family:Comic Sans Ms; margin-bottom:20px; border-radius:0px; width:80%;" class="bty">
+
+    <h2  style="color:green; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 30px; font-stretch: ultra-condensed;" >
+                          Balance <br>
+        <br>
+                              Ksh {{ user.account.balance }} <br>
+        <a  href="/transactions/withdraw" style="font-weight: bold;font-size: 14px; background-color:#E2D784;margin-top:20px; position:center; color:#001100; border-radius: 10px; height: 5vh; " class="btn link-item">withdraw</a>
+                        </h2>
+<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px; position:center; color:#001100; border-radius: 40px; height: 5vh;  " >Deposit</a>
+</div>
+                                 <hr style="height:2px;">
+
+                              <div style=" display:flex;flex-direction:row; margin-bottom:20px; height:25vh; border-radius:0px; width:100%;" class="bty">
+    <div style="padding:10px;">
+<svg  style=" background-color:#f6f4f0;margin-left:20px; margin-top:-10px;width:100px; height:100px; box-shadow: 10px 0px 34px 50px #f6f4f0;"  viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M30.7195 9.78166C29.9097 7.88122 28.7647 6.17642 27.2845 4.6952C25.8044 3.21397 24.1288 2.06812 22.2298 1.25764C20.247 0.419214 18.1525 0 16.0021 0C13.8238 0 11.7293 0.419214 9.7744 1.25764C7.87537 2.06812 6.17184 3.21397 4.69171 4.6952C3.21159 6.17642 2.06659 7.88122 1.25671 9.78166C0.418903 11.738 0 13.8341 0 16.014C0 18.1659 0.418903 20.262 1.25671 22.2463C2.06659 24.1467 3.21159 25.8515 4.69171 27.3328C6.17184 28.814 7.87537 29.9598 9.7744 30.7424C11.7572 31.5808 13.8517 32 16.0021 32C18.1525 32 20.247 31.5808 22.2298 30.7424C24.1288 29.9319 25.8323 28.786 27.3125 27.3048C28.7926 25.8236 29.9376 24.1188 30.7475 22.2183C31.5853 20.2341 32.0042 18.138 32.0042 15.986C32.0042 13.8341 31.5574 11.738 30.7195 9.78166ZM10.696 14.5048C11.3383 11.9336 13.6842 10.0611 16.4489 10.0611H27.5638C28.2899 11.4306 28.7367 12.9397 28.9043 14.5048H10.696ZM28.9043 17.5231C28.7367 19.0882 28.262 20.5974 27.5638 21.9668H16.4489C13.6842 21.9668 11.3662 20.0664 10.696 17.5231H28.9043ZM6.81415 6.81921C9.27172 4.35983 12.5392 3.01834 16.0021 3.01834C19.465 3.01834 22.7325 4.35983 25.19 6.81921C25.2738 6.90306 25.3297 6.95895 25.4134 7.0428H16.4489C14.0472 7.0428 11.8131 7.96507 10.1095 9.66987C8.76903 11.0114 7.9033 12.6882 7.62403 14.5048H3.09988C3.435 11.5983 4.71964 8.91528 6.81415 6.81921ZM16.0021 29.0096C12.5392 29.0096 9.27172 27.6681 6.81415 25.2087C4.71964 23.1127 3.435 20.4017 3.09988 17.5231H7.62403C7.93123 19.3397 8.79696 21.0166 10.1095 22.3581C11.8131 24.0629 14.0472 24.9852 16.4489 24.9852H25.4134C25.3297 25.069 25.2738 25.1249 25.19 25.2087C22.7325 27.6681 19.465 29.0096 16.0021 29.0096Z" fill="black"/>
+</svg>
+    <h2  style="color:#001100; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          WorldCoins <br>
+        <strong style="font-size:50%;">   Your Balance is Ksh {{ user.account.balance }}  </strong><br>
+    </h2>
+    </div>
+    <div style="font-family:Comic Sans Mn;text-align:center; font-size:50%;">
+        <center>
+<a  href="/Deposit"  class="btn " style=" font-weight: bold;font-size: 14px;color:#f6f4f0; margin-top:20px; background-color:green; " >Buy</a>
+<a  href="/Deposit" class="btn " style="font-weight: bold;font-size: 14px;color:#f6f4f0; margin-top:20px; background-color:#fffff0; color:#001100;" >Sell</a>
+        </center></div>
+</div>
+                              <div style=" display:flex;flex-direction:row;">
+                               <img style="box-shadow: 100px 2px 100px 50px orange; margin-left:10px;margin-top:20px; width:90px;opacity:100%; height:90px;border-radius:100%;"   src="{% static 'img/BTC.png'%}" alt="BTC">
+                              <div style=" display:flex;flex-direction:row; margin-bottom:20px; height:13vh; border-radius:0px; width:100%;" class="bty">
+
+    <h2  style=" color:#001100; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          Bitcoin <br>
+        <strong style="font-size:50%">   Your Balance is Ksh {{ user.account.balance }}  </strong><br>
+  <!--<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  " >Buy</a>-->
+    </h2>
+<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  width:; " >Buy</a>
+</div>
+                              </div>
+                                               <div style=" display:flex;flex-direction:row;">
+                               <img style="box-shadow: 100px 2px 100px 50px lightblue; margin-left:10px;margin-top:20px; width:90px;opacity:100%; height:90px;border-radius:100%;"   src="{% static 'img/ETH.png'%}" alt="BTC">
+                              <div style=" display:flex;flex-direction:row; margin-bottom:20px; height:13vh; border-radius:0px; width:100%;" class="bty">
+
+    <h2  style=" color:#001100; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          Ethereum <br>
+        <strong style="font-size:50%">   Your Balance is Ksh {{ user.account.balance }}  </strong><br>
+  <!--<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  " >Buy</a>-->
+    </h2>
+<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  width:; " >Buy</a>
+</div>
+                              </div>
+
+                                               <div style=" display:flex;flex-direction:row;">
+                               <img style="box-shadow: 100px 2px 100px 50px #001100; margin-left:10px;margin-top:20px; width:90px;opacity:100%; height:90px;border-radius:100%;"   src="{% static 'img/Mboa Academy.jpg'%}" alt="BTC">
+                              <div style=" display:flex;flex-direction:row; margin-bottom:20px; height:13vh; border-radius:0px; width:100%;" class="bty">
+
+    <h2  style=" color:#001100; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          MboaCoins <br>
+        <strong style="font-size:50%">   Your Balance is Ksh {{ user.account.balance }}  </strong><br>
+  <!--<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  " >Buy</a>-->
+    </h2>
+<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  width:; " >Buy</a>
+</div>
+                              </div>
+
+                               <div style=" display:flex;flex-direction:row;">
+                               <img style="box-shadow: 100px 2px 100px 50px #008800; margin-left:10px;margin-top:20px; width:90px;opacity:100%; height:90px;border-radius:100%;"   src="{% static 'img/BCH.png'%}" alt="BTC">
+                              <div style=" display:flex;flex-direction:row; margin-bottom:20px; height:14vh; border-radius:0px; width:100%;" class="bty">
+
+    <h2  style=" color:#001100; border-radius:7px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          BTC Cash <br>
+        <strong style="font-size:50%">   Your Balance is Ksh {{ user.account.balance }}  </strong><br>
+  <!--<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;  " >Buy</a>-->
+    </h2>
+<a  href="/Deposit" class="btn " style="background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 40px; height: 5vh; margin-top:20px;" >Buy</a>
+</div>
+                              </div>
+
+
+                     <br>
+                  </div>
+               </div>
+                 <div  style="font-family:Comic Sans Ms;
+                              width:100% ; height:80vh; margin-top:2px; margin-bottom:20px;  border-radius:40px; padding:5vh;
+                        background-color:#f9f4f0;
+                        "  class=" bty">
+                     <p class="btn" style=" background-color:#001100; color:#f6f4f0;  margin-bottom:5px;font-size:100%;">Buy, Rent & Sell  Trading Bots:</p>
+                     <div style=" display: flex;">
+                            <div class="btn" style=" box-shadow:20px 4px 100px #000; background-color:#e9FEC0; border-radius:7px ;margin-left:-10px; height:15vh;width:50%;">  </div>
+                            <div class="btn" style="box-shadow:20px 4px 100px #fff; background-color:#e9FEC0; border-radius:7px ; margin-left:5px; height:15vh;width:50%;">  </div>
+                              <div class="btn" style=" box-shadow:20px 4px 100px #000; background-color:#e9FEC0; border-radius:7px ; margin-left:5px;height:15vh;width:50%;">  </div>
+                            <div class="btn" style="box-shadow:20px 4px 100px #fff; background-color:#e9FEC0; border-radius:7px ; margin-left:5px; height:15vh;width:50%;">  </div>
+                     </div>
+                       <div style=" display: flex;margin-top:4px;">
+                            <div class="btn" style=" box-shadow:20px 4px 100px #000; background-color:#fff; border-radius:7px ;margin-left:-10px; height:15vh;width:50%;">  </div>
+                            <div class="btn" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; border-radius:7px ; margin-left:5px; height:15vh;width:50%;">  </div>
+                              <div class="btn" style=" box-shadow:20px 4px 100px #000; background-color:#f6f4f0; border-radius:7px ; margin-left:5px;height:15vh;width:50%;">  </div>
+                            <div class="btn" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; border-radius:7px ; margin-left:5px; height:15vh;width:50%;">  </div>
+                     </div>
+<div style=" font-family:Comic Sans Ms;display:flex;flex-direction:row; margin-bottom:40px; height:15vh; border-radius:10px; width:100%;" class="bty">
+ <img style="border:2px solid #000; box-shadow: 10px 0px 34px 50px #000;margin-left:-20px;margin-top:1px; width:90px;opacity:100%; height:90px;border-radius:100%;"   src="{% static 'img/WhatsAppBlack.jpg'%}" alt="eth">
+    <h2  style="color:#008800; border-radius:2px; padding-top:2vh;
+                        width:100% ; height:150px;font-weight: bold;font-size: 20px; font-stretch: ultra-condensed;" >
+                          Do You Have one ? <br>
+        <strong style="font-size:50%;color:#599;">   Develop a Bot & we will Buy It from You .Send it Via <br> WhatsApp </strong><br>
+  <!---->
+    </h2>
+</div>
+               <a  href="/Bot" class="btn " style="text-align:center; box-shadow: 10px 5px 34px 50px lightblue;background-color:#005500; font-weight: bold;font-size: 14px;color:#f6f4f0; border-radius: 10px; height: 6vh; width:100%;margin-top:-5px;  " >Buy,Sell & Rent to Us Trading  Bots </a>
+                        </div>
+                <hr style="height:2px;">
+                          <div style="display: flex;
+                              flex-direction: row;">
+               <div style="width:50%; margin-right: 10px; height:30vh;" class="bty">
+               </div>
+               <div style="width:50%; height:30vh;" class="bty"> </div>
+               </div>
+
+               <div style="width:100%; height:20vh;" class="bty"> </div>
+               <div style="width:100%; height:20vh;" class="bty"> </div>
+               <div style="width:100%; height:20vh;" class="bty"> </div>
+               <div style="width:100%; height:20vh;" class="bty"> </div>
+               <div style="display: flex;
+
+                                       flex-direction: row;">
+                        <div style="width:50%; margin-right: 10px; height:30vh;" class="bty">
+                        </div>
+                        <div style="width:50%; height:30vh;" class="bty"> </div>
+               </div>
+<!--
+                    <div  style="width:100% ; height:60vh; margin-top:2%; margin-bottom:4px;  border-radius:20px; padding-top:6vh;
+                        background-color:#f6f4f0; margin-left:2%;margin-top:2%;
+                        "  class=" bty"> <p style="font-size:60%;"class="btn">Co-operative Bank </p>
+                         <div  style="width:150% ; height:50vh; margin-bottom:2px;  border-radius:20px;
+                        background-color:#ffffff; margin-left:2%;margin-top:2%;
+                        "  class=" btn"> <p style="font-size:60%;" class="btn">Equity Bank </p>
+                         <div  style="width:100% ; height:50vh;
+                          margin-bottom:2px;  border-radius:20px;
+
+                        background-color:#001100; margin-left:2%;margin-top:2%;
+                        "  class=" btn"><p style="font-size:60%;" class="btn">KCB Bank </p>
+                             <div  style="width:100% ; height:50vh;
+                              margin-bottom:2px;  border-radius:20px;
+                        background-color:#005500; margin-left:2%;margin-top:2%;
+                        "  class=" btn"><p style="font-size:60%;" class="btn">NCBA Bank</p>
+                                 <div  style="width:100% ; height:50vh;
+                                 margin-bottom:2px;  border-radius:20px;
+                        background-color:#f04105; margin-left:2%;margin-top:2%;
+                        "  class=" btn"><p style="font-size:60%;" class="btn">Absa Bank </p>
+                           </div>
+              </div>
+            </div>
+            </div>
+-->
+                        <div class="bty" style="box-shadow:20px 4px 100px #fff; background-color:#f6f4f0; margin-left:5px; border-radius:7px ;height:15vh;width:100%;">  </div>
+
+
+<div style="margin-left:15%;">
+                       <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+                              </div>
+                      <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+
+                              </div>
+                      <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+
+                              </div>
+                      <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+
+                              </div>
+                      <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+
+                              </div>
+                              <div style="width:150px;height: 150px; border-radius: 100%;" class="bty">
+                              </div>
+
+                  </div>
+
+                  </div>
+         </section>
+            </div>
+         <!--Home Section End -->
+            <!-- Exit Section Starts -->
+
+             <section class="home-section align-items-center" id="exit">
+            <div class="container">
+               <div class="row align-items-center">
+
+                  </div>
+            </div>
+         </section>
+
+          <!-- Exit Section Ends -->
+         <!-- About Section Start -->
+         <section class="about-section sec-padding" id="assets">
+            <div class="container">
+               <div class="row">
+                  <div class="section-title">
+                     <h2>Saved Money Accounts</h2>
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="about-img">
+                     <div class="img-box">
+                        <img src="{% static 'img/about-img.png' %}" alt="about-img">
+                     </div>
+                  </div>
+                  <div class="about-text">
+                           <div style=" width:100%;display: flex;flex-direction: row;padding:2%;">
+                               <div>
+                              <div style="width:80px;height: 80px; border-radius: 100%;" class="bty">
+                              </div><div style=" padding-left:20px; width:80px;height:20px;border-radius:40px;background-color:#f0f0f0;margin-top:2px;"> <p>Bitcoin</p>
+                              </div>
+                               </div>
+                                <div>
+                              <div style="width:80px;height: 80px; border-radius: 100%;" class="bty">
+                              </div><div style=" padding-left:20px; width:80px;height:20px;border-radius:40px;background-color:#f0f0f0;margin-top:2px;"> <p>Bitcoin</p>
+                              </div>
+                               </div>
+                                <div>
+                              <div style="width:80px;height: 80px; border-radius: 100%;" class="bty">
+                              </div><div style=" padding-left:20px; width:80px;height:20px;border-radius:40px;background-color:#f0f0f0;margin-top:2px;"> <p>Bitcoin</p>
+                              </div>
+                               </div>
+
+
+                                  <div>
+                              <div style="width:80px;height: 80px; border-radius: 100%;" class="bty">
+                              </div><div style=" padding-left:20px; width:80px;height:20px;border-radius:40px;background-color:#f0f0f0;margin-top:2px;"> <p>Bitcoin</p>
+                              </div>
+                               </div>
+                                  <div>
+                              <div style="width:80px;height: 80px; border-radius: 100%;" class="bty">
+                              </div><div style=" padding-left:20px; width:80px;height:20px;border-radius:40px;background-color:#f0f0f0;margin-top:2px;"> <p>Bitcoin</p>
+                              </div>
+                               </div>
+                           </div>
+                     <h3> Foreign Currencies</h3>
+                     <div class="skills">
+                        <div class="skill-item"> $ USD - US Dollar</div>
+                        <div class="skill-item"> ₤ EUR - Euro</div>
+                        <div class="skill-item"> ¥ JPY - Japanese Yen </div>
+                        <div class="skill-item"> ₰ Saudi Riyal  </div>
+                        <div class="skill-item">£ GBP - British Pound </div>
+                        <div class="skill-item"> $ CAD - Canadian Dollar </div>
+                        <div class="skill-item">₸ TSHS - Tanzanian Shilling</div>
+                        <div class="skill-item"> ₰ USHS - Ungandan Shilling </div>
+                        <div class="skill-item"> ¥ CHY - Chinese Yuan </div>
+                     </div>
+
+                     <hr>
+                     <div class="about-tabs">
+                        <button type="button" class="tab-item active" data-target="# Cards">Credit Cards</button>
+                        <button type="button" class="tab-item" data-target="#paypal">Paypal</button>
+                        <button type="button" class="tab-item" data-target="#Bitcoin">Bitcoin</button>
+                        <button type="button" class="tab-item" data-target="#etherium">Etherium</button>
+                     </div>
+                     <!-- Cards Section Start -->
+                     <div class="tab-content active" id="cards">
+                        <div class="timeline">
+                           <div class="timeline-item">
+                              <span class="date">Equity Bank</span>
+                              <h4>Savings Accounts- <span>School fees</span></h4>
+                              <p>Some random text to tell about equity account and a demo of a  virtual card</p>
+                              <div  class="btn">
+                                 <!-- Portfolio Item Start-->
+                                 <div class="portfolio-item">
+                                    <div class="portfolio-item-thumbnail">
+                                       <img src="{% static 'img/portfolio/2.jpg' %}" alt="portfolio item thumb">
+                                    </div>
+                                    <h3 class="portfolio-item-title"> + Add Equity Account</h3>
+                                    <button type="button" class="btn view-project-btn">View Cards</button>
+                                    <div class="portfolio-item-details">
+                                       <div class="description">
+                                          <p>Some random text to tell about your project</p>
+                                       </div>
+                                       <div class="general-info">
+                                          <ul>
+                                             <li>Created - <span>04/04/2020</span></li>
+                                             <li>Technology - <span>HTML</span></li>
+                                             <li>Role - <span>Developer</span></li>
+                                             <li>Learn More - <span><a href="#" target="_blank">www.equitybank.co.ke</a></span></li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">KCB-Bank </span>
+                              <h4>B.Tech - <span>LoL Uniersity</span></h4>
+                              <p>Some random text to tell about yur degree</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">NCBA -Bank</span>
+                              <h4>B.Tech - <span>LoL Uniersity</span></h4>
+                              <p>Some random text to tell about yur degree</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Education Section End -->
+
+                     <!-- Exp Section Start -->
+                     <div class="tab-content" id="experience">
+                        <div class="timeline">
+                           <div class="timeline-item">
+                              <span class="date">Absa - Bank</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">2013 - 2016</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">2013 - 2016</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Exp Section End -->
+                     <a href="cv.pdf" target="_blank" class="btn">Download CV</a>
+                     <a href="#contact" class="btn link-item">Contact Me</a>
+                  </div>
+               </div>
+            </div>
+         </section>
+         <!-- About Section End -->
+         <!-- Mpesa Section Start -->
+         <section class="contact-section sec-padding" id="contact">
+            <div  style="border-radius:1px;" class="portfolio-item-thumbnail">
+
+                        <img
+                                    style="
+                                    width: 50px;
+                                    height:50px;
+                                    margin-top:20px;
+                                    margin-bottom:4px;
+                                    margin-left:100px;
+                                    box-shadow: 34px 8px 80px green;
+                                    border-radius: 100%;" src=" {% static 'img/default.png' %}" >
+               <h3 class="btn " style="margin-left:50px">     {{user.email}}</h3>
+
+
+                     </div>
+            <div class="container">
+               <div class="row">
+                  <div class="section-title">
+               </div>
+               <div class="row">
+                  <div class="contact-info">
+             <form method="POST"  action="stk"
+                                                                    style="border: 2px solid black;
+
+                                                                    opacity:1px;
+                                                                    color:white;margin: 2px; padding:10%; border-radius:40px;">
+                                                               |<p>Mboapay</p>  <img style="width:100px;  height:50px;"   src="{%static '/img/mpesa.png'%}">
+                                                             {% csrf_token %}
+
+                                                             <input type="text" id="phone_number" name="phone_number" placeholder="phone number"
+                                                                                class="btn form-control" required autofocus    style="font-family:Comic Sans Mn;font-size:24px;text-align:center; margin-top:5px;border-radius:10px;height:7vh; width:100%; "><br>
+                                                             <input type="number" id="amount" required name="amount" class=" btn form-control" placeholder="Amount " style="font-family:Comic Sans Mn;font-size:24px;text-align:center; height:7vh;margin-top:20px; margin-bottom:70px;border-radius:10px; width:100%;">
+
+                                                                     <center style="margin-top:50p x;
+                                                                          margin-bottom:20px;">
+
+                                                                      <button
+                                                               style="
+                                                                          font-size: 24px;
+                                                                          margin-top:-30px;
+                                                                          margin-left:10px;
+                                                                          margin-bottom:40px;
+                                                                          width:100%;
+                                                                          height:60px ;
+                                                                          position:center;
+                                                                          border-radius:40px;
+                                                                          background: #C9FEC0;
+                                                                          border:solid 1px #D2D2D2;
+                                                                          font-family:Comic Sans Mn;
+                                                                           text-decoration: none;
+                                                                          color: #5D6E1E;
+                                                                          padding:2%;
+                                                                          cursor:pointer;
+                                                                          box-shadow: 4px 1px 200px  #93c017;
+                                                                           "  href=" /"  >Deposit </button>
+                                                                 </center>
+
+                      </form>
+                      <!-- Portfolio Item Start-->
+                  <div class="portfolio-item">
+                     <center>
+                                         <div  style="
+                                           cursor:pointer;
+                                      width: 100%;
+                                      height:25vh;
+                                      margin-top:100px;
+                                      border:1px solid #fff;
+                                      color:green;
+                                      border-radius :40px;
+                                      background-color: transparent;
+                                      font-family: Comic Sans Mn;
+                                      box-shadow: 34px 45px 100px black;
+                                    ">
+
+
+                  <!-- Portfolio Item End-->
+                                         </div>
+                     </center>
+            </div>
+                  </div>
+               </div>
+               </div>
+            </div>
+         </section>
+         <!-- Contact Section End -->
+      <!-- Main End -->
+      <!-- Portfolio Item Details Popup Start -->
+      <div class="portfolio-popup">
+         <div class="pp-inner">
+            <div class="pp-content">
+               <div class="pp-header">
+                  <button type="button" class="btn pp-close"><i class="fas fa-times"></i></button>
+
+                     <img src="{%  static 'img/portfolio/1.jpg' %}" alt="pp-thumbnail">
+                  </div>
+                  <h3></h3>
+               </div>
+               <div class="pp-body">
+               </div>
+
+            </div>
+         </div>
+      <!-- Portfolio Item Details Popup Start
+      -->
+      <script src="{% static 'js/script.js' %}"></script>
+      <script src="{% static 'js/codeblock.js' %}"></script>
+
+
+</body></html>

@@ -1,0 +1,104 @@
+<html lang="en">
+{% load  static %}
+
+   <head>
+      <title> MboaEx </title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/font-awesome.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   </head>
+   <!-- PG Start -->
+
+      <div></div>
+      <div></div>
+      <div></div>
+
+
+   <!-- Overlay Start -->
+   <div class="overlay"></div>
+   <!-- Overlay End -->
+   <body>
+      <!-- Main Start -->
+      <div class="main hidden">
+         <!-- Header Start -->
+         <header class="header">
+            <div class="container">
+               <div class="row flex-end">
+                  <button type="button" class="nav-toggler">
+                  <span></span>
+                  </button>
+                  <div class="nav">
+                     <div class="nav-inner">
+                        <ul>
+                           <li><a href="#support" class="nav-item link-item">Support</a></li>
+                           <li><a href="/Deposit" class="nav-item link-item">Deposit</a></li>
+                           <li><a href="#assets" class="nav-item link-item">assets</a></li>
+                           <li><a href="#withdraw" class="nav-item link-item">withdraw</a></li>
+                           <li><a href="#invest" class="nav-item link-item">invest</a></li>
+                            <li class="nav-item dropdown">
+              <a class="sidebar-link" href="/logout">
+                <span class="icon-holder">
+                    <i class="ti-power-off mR-10"></i>
+                  </span>
+                <span class="title">Exit</span>
+              </a>
+            </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <!-- Header End -->
+         <!--Home Section Start -->
+         <section class="home-section align-items-center" id="home">
+            <div class="container">
+               <div class="row align-items-center">
+                  <div class="home-text">
+                     <img  class="logo" src="{% static 'img/Mboa Academy.jpg '%}" alt="profile-img">
+                     <h1  >  Mboa-ID</h1>
+                      <h3>This Your QR-Code and Mboa Identification Pass. <br>
+                          Use it for transactions,
+                          access-authentication,identity and easy service delivery and other activities <br>
+                          on the Mboa Technologies ecosystem. </h3>
+
+
+
+                  </div>
+               </div>
+
+                <center>
+                        <div  class="btn">
+                         <a style=" color:green;" href="/accounts/register" > Get Started - Your MboaID</a>
+
+                   </div>
+
+
+ </center>
+            </div>
+    </section>
+      </div>
+<section class="home-section align-items-center" id ="support">
+    <div class="container">
+               <div class="row align-items-center">
+                  <div class="home-text">
+               <div style="width:20vw; height:25%;margin-top:20px;" class="home-img">
+
+<center>
+                   <img style="padding:20%; width:100%; height:50%;" class="logoKenya"   src="{% static 'img/KenyanBrand.jpg'%}" alt="profile-img">
+
+</center>
+               </div>
+                 <p style="margin-top:40px;">Invest You Money In Mboa Technologies by buying <br>Mboa Coins</p>
+                 <a  style=" width:100%; padding:20%; position:center;" class="bty" href="/Deposit" ><h1>Support</h1></a>
+                  </div>
+               </div>
+    </div>
+</section>
+
+
+      <script src="{% static 'js/script.js' %}"></script>
+
+   </body>
+</html>

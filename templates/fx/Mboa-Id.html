@@ -1,0 +1,124 @@
+{% extends 'core/base.html' %}
+
+{% block head_title %}{{ title }}{% endblock %}
+
+{% block content %}
+{%load static%}
+
+<section class="home-section align-items-center" id ="MyId">
+    <div class="container"><div class="row align-items-center"><div class="section-title">
+
+      <div style="margin-top:10vh; margin-left:20px;" class="btn"> <p> {{ user.email }}</p>  </div>
+                     <h2>My Mboa-ID</h2>
+                  </div>
+               </div>
+
+               <div class="row">
+                  <div class="about-img">
+                     <div class="img-box">
+                        <img  src="{% static 'img/about-img.png' %}" alt="about-img">
+                     </div>
+                  </div>
+                  <div class="about-text">
+                     <button class="btn">
+                     Apis  from exchange markets
+                     </button>
+                     <hr>
+                     <h3> Foreign Currencies</h3>
+                     <div class="skills">
+                        <div class="skill-item"> $ USD - US Dollar</div>
+                        <div class="skill-item"> ₤ EUR - Euro</div>
+                        <div class="skill-item"> ¥ JPY - Japanese Yen </div>
+                        <div class="skill-item"> ₰ Saudi Riyal  </div>
+                        <div class="skill-item">£ GBP - British Pound </div>
+                        <div class="skill-item"> $ CAD - Canadian Dollar </div>
+                        <div class="skill-item">₸ TSHS - Tanzanian Shilling</div>
+                        <div class="skill-item"> ₰ USHS - Ungandan Shilling </div>
+                        <div class="skill-item"> ¥ CHY - Chinese Yuan </div>
+                     </div>
+
+                     <hr>
+                     <div class="about-tabs">
+                        <a type="button" class="tab-item active" data-target="# Cards">Credit Cards</a>
+                        <a type="button" class="tab-item" data-target="#paypal">Paypal</a>
+                        <a type="button" class="tab-item" data-target="#Bitcoin">Bitcoin</a>
+                        <a type="button" class="tab-item" data-target="#etherium">Etherium</a>
+                     </div>
+                     <!-- Cards Section Start -->
+                     <div class="tab-content active" id="cards">
+                        <div class="timeline">
+                           <div class="timeline-item">
+                              <span class="date">Equity Bank</span>
+                              <h4>Savings Accounts- <span>School fees</span></h4>
+                              <p>Some random text to tell about equity account and a demo of a  virtual card</p>
+                              <div  class="btn">
+                                 <!-- Portfolio Item Start-->
+                                 <div class="portfolio-item">
+                                    <div class="portfolio-item-thumbnail">
+                                       <img style="height:20%;width:80%;" src="{% static 'img/hero.png' %}" alt="portfolio item thumb">
+                                    </div>
+                                    <h3 class="portfolio-item-title"> + Add Equity Account</h3>
+                                    <button type="button" class="btn view-project-btn">View Cards</button>
+                                    <div class="portfolio-item-details">
+                                       <div class="description">
+                                          <p>Some random text to tell about your project</p>
+                                       </div>
+                                       <div class="general-info">
+                                          <ul>
+                                             <li>Created - <span>04/04/2020</span></li>
+                                             <li>Technology - <span>HTML</span></li>
+                                             <li>Role - <span>Developer</span></li>
+                                             <li>Learn More - <span><a href="#" target="_blank">www.equitybank.co.ke</a></span></li>
+                                          </ul>
+                                       </div>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">KCB-Bank </span>
+                              <h4>B.Tech - <span>LoL Uniersity</span></h4>
+                              <p>Some random text to tell about yur degree</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">NCBA -Bank</span>
+                              <h4>B.Tech - <span>LoL Uniersity</span></h4>
+                              <p>Some random text to tell about yur degree</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Education Section End -->
+
+                     <!-- Exp Section Start -->
+                     <div class="tab-content" id="experience">
+                        <div class="timeline">
+                           <div class="timeline-item">
+                              <span class="date">Absa - Bank</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">2013 - 2016</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                           <div class="timeline-item">
+                              <span class="date">2013 - 2016</span>
+                              <h4>web developer - <span>Quantum Base</span></h4>
+                              <p>Some random text to tell about your job</p>
+                           </div>
+                        </div>
+                     </div>
+                     <!-- Exp Section End -->
+                     <a href="cv.pdf" target="_blank" class="btn">Download CV</a>
+                     <a href="#contact" class="btn link-item">Contact Me</a>
+                  </div>
+               </div>
+            </div>
+         </section>
+        {% if form.amount.errors %}
+            {% for error in form.amount.errors %}
+                {{ error }}
+            {% endfor %}
+        {% endif %}
+{% endblock %}

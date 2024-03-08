@@ -1,0 +1,350 @@
+{% extends "ec/base.html" %}
+{% load static %}
+{% block content %}
+
+  <main class="mt-5 pt-4">
+    <div class="container dark-grey-text mt-5">
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+           <img class="img-fluid" src=" {% static object.image.url %}" alt="{{object.name}}">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-md-6 mb-4">
+
+          <!--Content-->
+          <div class="p-4">
+
+            <div class="mb-3">
+              <a href="">
+                <span class="badge black mr-1">{{ object.get_category_display }}</span>
+              </a>
+            </div>
+
+            <p class="lead">
+              {% if object.discount_price %}
+              <span class="mr-1">
+                <del style="color:#062C30;">Ksh.{{ object.price }}</del>
+              </span>
+
+              <span style="color:#1DA756;">Ksh.{{ object.discount_price }}</span>
+              {% else %}
+              <span>Ksh.{{ object.price }}</span>
+              {% endif %}
+            </p>
+
+            <p class="lead font-weight-bold">Description</p>
+
+            <p>{{ object.description }}</p>
+
+            {% comment %} <form class="d-flex justify-content-left">
+              <!-- Default input -->
+              <input type="number" value="1" aria-label="Search" class="form-control" style="width: 100px">
+              <button class="btn btn-primary btn-md my-0 p" type="submit">
+                Add to cart
+                <i class="fas fa-shopping-cart ml-1"></i>
+              </button>
+
+            </form> {% endcomment %}
+            <a href="{{ object.get_add_to_cart_url }}" class="btn btn-primary btn-md my-0 p">
+              Add to cart
+              <i class="fas fa-shopping-cart ml-1"></i>
+            </a>
+            <a href="{{ object.get_remove_from_cart_url }}" class="btn btn-danger btn-md my-0 p">
+              Remove from cart
+            </a>
+
+          </div>
+          <!--Content-->
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <hr>
+
+      <!--Grid row-->
+      <div class="row d-flex justify-content-center wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-md-6 text-center">
+
+          <h4 class="my-4 h4">Additional information</h4>
+
+          <p>
+            {{ object.description }}
+            </p>
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+      <!--Grid row-->
+      <div class="row wow fadeIn">
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-12 mb-4">
+
+          <img src="{% static 'img/mpesa.png'%}"  class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="{% static 'img/mpesa.png'%}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+        <!--Grid column-->
+        <div class="col-lg-4 col-md-6 mb-4">
+
+          <img src="{% static 'img/mpesa.png'%}" class="img-fluid" alt="">
+
+        </div>
+        <!--Grid column-->
+
+      </div>
+      <!--Grid row-->
+
+    </div>
+  </main>
+
+{% endblock content %}
+
+
+
+
+{% extends 'shop/base.html' %}
+{% block head_title %}Buy Assets{% endblock %}
+
+{% block content %}
+{%load static%}
+{%load admin_list%}
+{% include 'core/messages.html'%}
+<section class="home-section align-items-center" id ="buy">
+    <div class="container">
+<div class="row">
+      <div class="section-title">
+          <img style="width:300px;opacity:70%;"   src="{% static 'img/shootCenterBanner.png'%}" alt="KenyanBrand">
+
+                     <h2  style="margin-top:-30vh;" class="btn">MboaEx Market Place</h2>
+                  </div>
+               </div>
+
+                  <div class="about-img">
+
+                <div  class="home-img">
+                    {% if request.user.is_authenticated %}
+<center>
+        <img style="width:150px; height:150px ;border-radius:100%; "  src=" {{ user.address.profileimg.url }} " alt="profile-img">
+      <div style="margin-bottom:20px; font-size:80%;height:20vh;animation: zoomInOut 30s linear infinite;">
+                           <h1 style="font-size:200%; color:#001100;" > Wooza,  {{ user.first_name}}<h2 style="font-size:90%;" >{{user.email}}<br>
+                               <h3 style="font-size:100%;Color:#005500;">  Mpesa Account:   0{{user.address.postal_code}}</h3></h2>
+                               <hr/>
+
+                           </h1>
+
+                           <br>
+                           Mboa Till: {{user.account.account_no}}
+      </div>
+    </center>
+                </div>
+                      <center>
+    <a class="bty" style=" border-radius:8px; background-color:black;color:#f6f4f0;" href="/setting">Settings</a>
+    <button class="bty" style=" border-radius:8px;background-color:black;color:#f6f4f0;" > <a href="/wallet"> Wallet </a></button>
+                      </center>
+   {% include 'core/MboaCoins.html'%}
+
+                    {% else %}
+<div style="margin-top:50px;" class="text-md lg:flex-grow"></div>
+            <div>
+                <a href="{% url 'accounts:user_login' %}" class="btn mr-2 inline-block font-medium text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0">Login</a>
+            </div>
+            <div>
+                <a href="{% url 'accounts:user_registration' %}" class="bty inline-block font-medium text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0">Register</a>
+            </div>
+    </div>
+    <p style="margin-top:40px;">Invest You Money In <br> Mboa Technologies by buying <br>Mboa Coins</p>
+      <a href="{% url 'transactions:eshopcart' %}" class="btn block mt-4 lg:inline-block lg:mt-0 text-white hover:text-white">
+                    Buy MboaCoins
+                </a>
+
+                    {% endif %}
+
+
+                  </div>
+                  <div class="about-text">
+                       <div class="about-tabs">
+                        <button type="button" class="tab-item active" data-target="#education">NFTs</button>
+                        <button type="button" class="tab-item" data-target="#experience">Crypto</button>
+                        <button type="button" class="tab-item" data-target="#experience">Bonds</button>
+                        <button type="button" class="tab-item" data-target="#experience">Foreign Currency</button>
+                     </div>
+                      <div class="bty" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;width:100%;">
+                     <h3>Kenyan NFTs</h3>
+                     <div class="skills">
+                        <div class=" btn skill-item">Manyanga</div>
+                        <div class=" btn skill-item">Content</div>
+                        <div class="btn skill-item">Cultures</div>
+                        <div class="btn skill-item">Art</div>
+                        <div class="btn skill-item">Landscape</div>
+                        <div class="btn skill-item">Sports</div>
+                     </div>
+                      </div>
+
+<div  style="margin:2%;" class="text-center mb-4  align-items-center" id="product-card"><div class="row wow fadeIn">
+
+    <div class="home-text">
+                           <div style="display:flex; width:100%;
+                                           flex-direction:row;">
+            <div style="width:100%; padding:2%; margin:2%;" >
+                              <br>
+               <div style="width:100%; margin-right: 10px; height:30vh;" class="bty">
+               </div>
+               <div style="width:100%; height:30vh;" class="bty"> </div>
+               </div>
+                               <div style="width:100%; padding:2%; margin:2%;"  >
+                              <br>
+               <div style="width:100%; margin-right: 10px; height:30vh;" class="bty">
+               </div>
+               <div style="width:100%; height:30vh;" class="bty"> </div>
+               </div>
+                           </div>
+
+</div>
+</div></div>
+ <div class="btn" style="display: flex; flex-direction: row;
+          box-shadow:20px 4px 100px #fff;margin-bottom:2px;padding:2%; background-color:#ffffff00; border-radius:7px ;height:50vh;width:100%;"><a href="/ad">
+  <img style=" border-radius:7px;  width:50vw; opacity:90%; height:100%"src="  {% static 'img/Mboa_f.jpg' %}"  >
+     <div class="bty" style="box-shadow:20px 45px 100px #008800; margin-left:-30vw;width:100%;border-radius:7px; ">
+                    <h1 style="font-size:110%; color:000;" >- Non Fungible Tokens -</h1>
+                      <a class="bty" style=" background-color:#008800;border-radius:40px;margin-left:-60%; padding:4px;  height:30px; width:100%;color:#fff;box-shadow:20px 4px 50px #f6f4f0;">Invest Now</a>
+         <h1 style="font-size:150%;color:yellow; background-color:#00110;box-shadow: 10px 0px 34px 30px purple;opacity:50%; border:0.1px solid #000;border-radius:10px;">Matatu <b style="color:#008800;">Culture</b> <br> <strong style="color:#049;" >NFTs</strong><hr>
+         <strong style="color:#000;" >KENYAN</strong></h1>  </div>
+
+ </a></div>
+                           <div  style=" box-shadow:20px 4px 100px #fff;margin-bottom:2px;padding:2%; background-color:#ffffff00; border-radius:7px ;height:30vh;width:100%;">
+                          <p class="bty" style=" color:#fefefe;background-color:#001100;" >Matwana Vendors : </p>
+                      <div style=" display: flex;flex-direction: row;padding:2%;">
+   {% for product in products%}
+                                <div class="row wow fadeIn">
+                                   <img  style=" border-radius:100%; width:100px; height:100px;"src="{{ product.image.url }}"  >
+                              <div style="  width:100%;height:20px;border-radius:40px;background-color:#000;margin-top:5px;">
+                                  <p style="padding:2%; text-align:center; color:#f6f4f0;  font-size:50%;">{{ product.slug }}</p>
+                              </div>
+                               </div>
+    {% endfor%}
+                             </div>
+                          </div>
+                      <div  style="margin-top:2%;" class="text-center mb-4 home-section align-items-center" id="home">
+    <div class="row">
+                           <div style="margin-top:1vh; display:flex; width:100%;
+                                           flex-direction:column;">
+            <div style="width:95%; padding:2%; margin:2%;color:white;" >
+                              <br>
+                    {% for product in products%}
+               <div  style="width:80%; margin-top:20px; border:2px transparent; height:60vh;" >
+                   <img style=" border-radius:20px; margin-bottom:-450px; width:100vw; opacity:90%; height:100%"src="{{ product.image.url }}"  >
+                    {% include 'core/MpesaButton.html'%}
+  <!--<p  class="bty" style="color:white; ; border:transparent; margin-top:-40px; font-size:50%; " >{{ product.slug }} <i class="fas fa-shopping-cart ml-1"></i></p>
+  <p  class="bty" style="color:white; ; border:transparent; margin-top:-20px; font-size:50%; " >{{ product.category }}</p>
+                  --> <p  class="bty" style=" border-radius:2px solid #001100;color:white; box-shadow: 8px 8px 50px #fff; border:none; margin-bottom:-10%; font-size:100%; " >Ksh.{{ product.price }}</p>
+
+</div>
+
+                     {% endfor%}
+            </div>
+               <!-- <div style="display:flex; flex-direction:row; margin-top:220px;">
+               <div class="bty" style="width:50px;height:40px;margin-right:40%;">
+               </div>
+                   <div class="bty" style="width:120px;height:40px;">
+               </div>
+               </div> -->
+
+                               <div >
+                              <br>
+    {% for product in products%}
+<ul>
+    <li  style="width:100%; padding:2%;" class="bty" >
+        <h2 style=" margin-top:50px;margin-bottom:30px;" class="btn">{{ product.name }}</h2> <br>
+
+
+<div style=" flex-direction: row;">
+    <img style="width:100%;opacity:15%;border-radius:7px;" src=" {{ product.image.url }}">
+    <div style=" margin-top:-150px; display:flex;flex-direction:row;">
+
+    <img style="margin-top:-120px;  opacity:100%;border-radius:100%;width:100px;height:100px;" src=" {{ product.image.url }}">
+<p  style=" border:none; margin-top:-100px; font-size:150%; " class="bty">{{ product.slug }}</p>
+    </div>
+               <div style="margin-top:1px;width:100%; background-color:#F7F6F0; " class="bty">
+
+     <p style="width:100%; padding-top:20px;" >{{ product.description }}</p>
+                    {% if product.discount_price %}
+                   <p  style="background-color:#1DA756;" class="bty view-project-btn"> Price: Ksh.{{ product.price }} </p>
+                   <p  style="background-color:#1DA756;" class="bty view-project-btn"> Price: Ksh.{{ product.discount_price }} </p>
+
+                   {% else %}
+
+                   <p  style="background-color:#1DA756;" class="bty view-project-btn"> Price: Ksh.{{ product.price }} </p>
+
+                   {% endif %}
+                   <h6 style="font-size:60%;color:#062C30; margin-top:5px;">price impact warning:<strong style="color:#E4D789;">   1.88%   </strong>          Quote updates in <strong style="color:#E4D789;">   55s  </strong>Price is VAT. inclusive</h6>
+                <a style="margin-bottom:1px;  background-color:#E2D784;"  class="bty view-project-btn"> 3D View    <img  style="height:20px;" src="{% static 'img/3dview.png' %}"> </a>
+
+               <a style="margin-bottom:1px; color:#fff; background-color:#000;" href="{{ object.get_add_to_cart_url }}"  class="bty">Add to Cart  <i class="fas fa-shopping-cart ml-1"></i></a>
+                     {% include 'core/MpesaButton.html'%}
+               </div>
+
+</div>
+  <!--<div class="bty" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;height:15vh;width:100%;">
+ -->
+         <p style=" border-radius:7px; box-shadow:8px 8px 10px #f6f4f0; height:20px; color:#009900;margin-top:2px;font-size:100%;">Supported Payment Options: </p>
+        <div class="bty" style="display: flex; flex-direction: row;
+          box-shadow:20px 4px 100px #fff;margin-bottom:20px; background-color:#ffffff00; border-radius:7px ;height:15vh;width:100%;">
+
+
+
+               <div style=" background -color:#000;; padding-top:2%; margin-right:1%; width:60px;height:60px; border-radius:100%; position:center; border:2px black;">
+               <a  href="/wallet">
+                   <p style="animation: zoomInOut 30s linear infinite; font-size:100%; font-weight:500px; color: #001100;margin-top:10px;margin-right:2px; width:100%;" > <img style="margin-bottom:5px; position:center;margin-left:2%; box-shadow: 34px 8px 80px green; width:40px; height:40px;border-radius: 100%;" src="{% static 'img/ZEC.png' %} " >Cards</p>
+</a>   <hr>
+        </div>
+   <div style=" background -color:#000;; padding-top:2%; margin-right:1%; width:60px;height:60px; border-radius:100%; position:center; border:2px black;">
+               <a  href="/wallet">
+                   <p style="animation: zoomInOut 30s linear infinite; font-size:100%; font-weight:500px; color: #001100;margin-top:10px;margin-right:2px; width:100%;"  > <img style="margin-bottom:5px; position:center;margin-left:2px; box-shadow: 34px 8px 80px green; width:40px; height:40px;border-radius: 100%;" src="{% static 'img/ETH.png' %} " >ETH</p>
+</a>
+        </div>
+               <div style=" background -color:#000;; padding-top:2%; margin-right:1%; width:60px;height:60px; border-radius:100%; position:center; border:2px black;">
+               <a  href="/wallet">
+                   <p style="animation: zoomInOut 30s linear infinite; font-size:100%; font-weight:500px; color: #001100;margin-top:10px;margin-right:2px; width:100%;"  > <img style="margin-bottom:5px; position:center;margin-left:1%; box-shadow: 34px 8px 80px green; width:40px; height:40px;border-radius: 100%;" src="{% static 'img/BTC.png' %} " >BTC</p>
+</a>   <hr>
+        </div>
+             <div style=" background -color:#000;; padding-top:2%; margin-left:1%; width:60px;height:60px; border-radius:100%; position:center; border:2px black;">
+               <a  href="/transactions/mboapay">
+                   <p style=" animation: zoomInOut 30s linear infinite; font-size:100%; font-weight:500px; color: #001100;margin-top:10px;margin-right:1px; width:100%;"  > <img style="margin-bottom:5px; position:center;margin-left:1%; box-shadow: 34px 8px 80px green; width:40px; height:40px;border-radius: 100%;" src="{% static 'img/Mboa Academy.jpg' %} " >MboaCoins</p>
+</a>   <hr>
+        </div>
+  </div>
+    </li>
+     {% endfor%}
+</ul></div>
+         </div>
+    </div>
+</div>
+                      </div></section>
+{% endblock %}
+
+

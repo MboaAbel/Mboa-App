@@ -1,0 +1,102 @@
+{% extends 'shop/base.html' %}
+{% block head_title %}Buy Assets{% endblock %}
+
+{% block content %}
+{%load static%}
+{%load admin_list%}
+{% include 'core/messages.html'%}
+<section class="home-section align-items-center" id ="buy">
+    <div class="container">
+<div class="row">
+      <div class="section-title">
+          <img style="width:300px;opacity:70%;"   src="{% static 'img/shootCenterBanner.png'%}" alt="KenyanBrand">
+      </div>
+
+                <div  class="home-img">
+                    {% if request.user.is_authenticated %}
+<center>
+        <img style="width:150px; height:150px ;border-radius:100%; "  src=" {{ user.address.profileimg.url }} " alt="profile-img">
+      <div style="margin-bottom:20px; font-size:80%;height:20vh;animation: zoomInOut 30s linear infinite;">
+                           <h1 style="font-size:200%; color:#001100;" > Wooza,  {{ user.first_name}}<h2 style="font-size:90%;" >{{user.email}}<br>
+                               <h3 style="font-size:100%;Color:#005500;">  Mpesa Account:   0{{user.address.postal_code}}</h3></h2>
+                               <hr/>
+
+                           </h1>
+
+                           <br>
+                           Mboa Till: {{user.account.account_no}}
+      </div>
+                  <center>
+    <a class="bty" style=" border-radius:8px; background-color:black;color:#f6f4f0;" href="/setting">Settings</a>
+    <button class="bty" style=" border-radius:8px;background-color:black;color:#f6f4f0;" > <a href="/wallet"> Wallet </a></button>
+                      </center>
+    </center>
+                </div>
+                    {% else %}
+<div style="margin-top:50px;" class="text-md lg:flex-grow"></div>
+            <div>
+                <a href="{% url 'accounts:user_login' %}" class="btn mr-2 inline-block font-medium text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0">Login</a>
+            </div>
+            <div>
+                <a href="{% url 'accounts:user_registration' %}" class="bty inline-block font-medium text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-gray-800 hover:bg-white mt-4 lg:mt-0">Register</a>
+            </div>
+    </div>
+
+         <div class="bty" style="display: flex; flex-direction: row;background:url({% static 'img/Mboa_f.jpg' %});
+          box-shadow:20px 4px 100px #fff;margin-bottom:2px;padding:2%; background-color:#ffffff00; border-radius:7px ;"><a href="/ad">
+         </a></div>
+    {% endif%}
+   <div class="about-text">
+      <div class="container">
+               <div class="row">
+                  <div class="section-title">
+                          <img style="margin-top:-40vh; width:300px;opacity:70%;"   src="{% static 'img/shootCenterBanner.png'%}" alt="KenyanBrand">
+                     <h2 style="margin-top:-20vh;"> Wooza Shop</h2>
+                      <p>Your Online Marketplace for everything.From Electronics, Digital Assets, Government Bonds, Software, Websites, Social Media Accounts,Cryptocurrency
+                      E-books,Video Games, Event Tickets, Applications, Computer Systems,
+                      AI Content, Netflix Accounts, and more than you can imagine</p>
+                  </div>
+               </div>
+  {% include 'core/MboaCoins.html'%}
+                    <div style=" box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;width:95%;margin-bottom:20px;margin-left:20px;" class="about-tabs">
+
+                        <button  href="/" type="button" class="tab-item active " data-target="#education">Available Products In Stock:</button>
+                 </div>
+                <div  style="margin-top:20px;" class="row">
+                  <!-- Portfolio Item Start-->
+                    {% for Item in Items%}
+                  <div class="portfolio-item">
+                     <div class="portfolio-item-thumbnail">
+                        <img src="{{ object.image02.url }}" alt="{{ Item.name }}">
+                     </div>
+
+  <h3 style=" font-family:Comic Sans Mn; font-weight:bold 500px;font-size:200%;" class="portfolio-item-title">{{ Item.name }}</h3>
+                       <p  style="background-color:#1DA756; font-size:100%;" class="btn view-project-btn"> Price: Ksh.{{ Item.price }}</p>
+                      <h6 style="font-size:60%;color:#062C30; margin-top:5px;">price impact warning:<strong style="color:#E4D789;">   1.88%   </strong>          Quote updates in <strong style="color:#E4D789;">   55s  </strong>Price is VAT. inclusive</h6>
+    <p style="font-size:90%; width:100%; height:15vh; padding-top:20px;" >{{ product.description }}</p>
+                     <div class="bty" style="box-shadow:20px 4px 100px #fff; background-color:#ffffff00; margin-left:5px; border-radius:7px ;height:20vh;width:100%;">
+ <center>
+                         <div style="margin-bottom:5px; display:flex;flex-directio:row; height:60px;">
+                         <a style="margin-bottom:1px; display:flex;flex-directio:column; border-radius:10px; background-color:#E2D784;"  class="bty view-project-btn"><img  style="margin-left:2px;height:20px;" src="{% static 'img/3dview.png' %}"> </a>
+                         <a style=" margin-left:4px;display:flex;flex-directio:column; border-radius:40px;margin-bottom:1px;  background-color:#f6f4f0;"  class="bty view-project-btn"><i class="fas fa-shopping-cart ml-1"></i> </a>
+                    <a style="margin-left:4px;font-size:150%; color:red; margin-bottom:1px; display:flex;flex-directio:column; border-radius:10px; background-color:#fefefe;"  class="bty view-project-btn">❤</a>
+
+                     </div>
+{% include 'core/MpesaButton.html'%}
+ </center>   </div>
+
+                     <div style="">
+
+
+                     </div>
+
+                     </div>
+                      {% endfor%}
+                  <!-- Portfolio Item End-->
+               </div>
+            </div>
+
+
+{% endblock content %}
+
+   </div></div></section>

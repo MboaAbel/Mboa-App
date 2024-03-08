@@ -1,0 +1,77 @@
+{% extends "shop/base.html" %}
+{% load static %}
+
+{% block content %}
+                    <section style=" margin-top:20px;" class=" home-section  wow fadeIn ">
+
+    <table style=" margin-left:20%;border-radius:7px;" class="bty">
+        <thead >
+        <tr style="padding:5%; color:#fefefe;">
+            <th scope="col">#</th>
+            <th scope="col">Item title</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total Price</th>
+        </tr>
+        </thead>
+        <tbody  style="font-size:50%;padding:5%;">
+        {% for order_item in object.items.all %}
+        <tr>
+            <th scope="row">{{ forloop.counter }}</th>
+            <td>{{ order_item.item.title }}</td>
+            <td>{{ order_item.item.price }}</td>
+            <td>
+                <a href="{% url 'remove-single-item-from-cart' order_item.item.slug %}"><i class="fas fa-minus mr-2"></i></a>
+                {{ order_item.quantity }}
+                <a href="{% url 'add-to-cart' order_item.item.slug %}"><i class="fas fa-plus ml-2"></i></a>
+            </td>
+            <td>
+            {% if order_item.item.discount_price %}
+                Ksh{{ order_item.get_total_discount_item_price }}
+                <span class="badge badge-primary">Saving Ksh{{ order_item.get_amount_saved }}</span>
+            {% else %}
+                Ksh{{ order_item.get_total_item_price }}
+            {% endif %}
+            <a style='color: red;' href="{% url 'remove-from-cart' order_item.item.slug %}">
+                <i class="fas fa-trash float-right"></i>
+            </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan='5'>Your cart is empty</td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            <a class='btn btn-primary float-right' href='/'>Continue shopping</a>
+            </td>
+        </tr>
+        {% endfor %}
+        {% if object.coupon %}
+        <tr>
+            <td colspan="4"><b>Coupon</b></td>
+            <td><b>-Ksh{{ object.coupon.amount }}</b></td>
+        </tr>
+        {% endif %}
+        {% if object.get_total %}
+        <tr>
+            <td colspan="4"><b>Order Total</b></td>
+            <td><b>Ksh{{ object.get_total }}</b></td>
+        </tr>
+        <tr>
+            <td colspan="5">
+            <a class='bty btn-warning float-right ml-2' href='/checkout/'> checkout</a>
+            <a class=' bty btn-primary float-right' href='/Duka'>Continue shopping</a>
+            <a class="bty float-right ml-2" style="font-size:100%;border-radius:7px; background-color:#000; color:#f6f4f0;" href="/checkout/" >Order Na<img style=" margin-left:2px; border-radius:100%; width:40px;  height:40px;"   src="{% static '/img/WhatsAppBlack.jpg'%}"></a>
+
+
+            </td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+
+                    </section>
+{% endblock content %}
+
+
