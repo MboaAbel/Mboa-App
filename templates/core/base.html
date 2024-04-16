@@ -9,7 +9,7 @@
         <meta name="description" content="New Wave of Kenyan trade and investing in digital assets" />
         <meta name="author" content="Mboa Technologies" />
         <title>
-            {% block head_title %}MboaEx{% endblock %}
+            {% block head_title %}mateemonee{% endblock %}
         </title>
       <link rel="stylesheet" href="{% static 'style.css' %}">
       <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -49,10 +49,11 @@
                   <button type="button" class="nav-toggler">
                   <span></span> </button>
                   <div class="nav">
-                     <div class="nav-inner">
+                     <div  style="background-color:rgba(0,0,0,0.2);
+        opacity:90%; border-radius:40px;backdrop-filter:blur(10px);border:2px solid rgba(255,255,255,0.2);z-index:10;display:flex;box-shadow:40px 40px 40px 80px rgba(0,0,0,0.3);" class="nav-inner">
                          <div style=" font-width:500px bold;color:#008800;margin-left:20px;margin-bottom:10px;" class="about-tabs">
                         <a  href="/accounts/settings" type="button" class="tab-item active ">My Profile</a>
-                        <a  href="/ad" type="button" class="tab-item ">About Us</a>
+                        <a  href="/" type="button" class="tab-item ">About Us</a>
                         <a  href="/biz" type="button" class="tab-item">Matwana</a>
                         <a  href="/transactions/withdraw" type="button" class="tab-item">Discover</a><br>
                          <a  href="/page"  type="button" class="tab-item  "> WhatsApp Groups?</a>
@@ -80,6 +81,8 @@
         {% endblock %}
         {% block footer_extra %}{% endblock %}
     </body>
+
+
 <div class="portfolio-popup">
          <div class="pp-inner">
             <div class="pp-content">
