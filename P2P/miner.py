@@ -250,9 +250,9 @@ def validate_signature(public_key, signature, message):
 
 def welcome_msg():
     print("""       =========================================\n
-       MboaEx P2P Blockchain Transactions\n
+       +mboa P2P Blockchain Transactions\n
        =========================================\n\n
-        Easy.Secure.Fast. Simple Online P2P Transactions for the MboaEx Platforms. \n\n\n""")
+        Easy.Secure.Fast. Simple Online P2P Transactions for the +mboa Platforms. \n\n\n""")
 
 
 if __name__ == '__main__':
@@ -267,16 +267,16 @@ if __name__ == '__main__':
     transactions_process.start()
 
 
-# def Blockchain_miner():
-#     welcome_msg()
-#     Start mining
-    # pipe_output, pipe_input = Pipe()
-    # miner_process = Process(target=mine, args=(pipe_output, BLOCKCHAIN, NODE_PENDING_TRANSACTIONS))
-    # miner_process.start()
+def Blockchain_miner():
+    welcome_msg()
+    # Start mining
+    pipe_output, pipe_input = Pipe()
+    miner_process = Process(target=mine, args=(pipe_output, BLOCKCHAIN, NODE_PENDING_TRANSACTIONS))
+    miner_process.start()
     
     # Start server to receive transactions
-    # transactions_process = Process(target=node.run(), args=pipe_input)
-    # transactions_process.start()
+    transactions_process = Process(target=node.run(), args=pipe_input)
+    transactions_process.start()
 
 
 
